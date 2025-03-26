@@ -98,6 +98,14 @@ body {
   height: 100%;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+
 body {
   background: #0b0a15;
   font-family: "Martel", serif;
@@ -981,7 +989,7 @@ button:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
-  background-color: #000000;
+  background-color: #000000;  
   border-color: #000000;
   color: #ffffff;
   outline: 0;
@@ -2448,7 +2456,7 @@ html.no-csstransitions .hero-content {
 }
 
 .s-about .right-vert-line {
-  background-color: #302c59;
+  background-color: #ffffff;
 }
 
 .s-about__section--profile {
@@ -2461,7 +2469,7 @@ html.no-csstransitions .hero-content {
 .s-about__section--profile::before {
   content: "";
   display: block;
-  background-color: #b3c2c1;
+  background-color: #302c59;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -2828,7 +2836,7 @@ html.no-csstransitions .hero-content {
 .s-portfolio::before {
   content: "";
   display: block;
-  background-color: #b3c2c1;
+  background-color: #302c59;
   position: absolute;
   top: 0;
   right: 0;
@@ -3057,6 +3065,55 @@ html.no-csstransitions .hero-content {
   }
 
 }
+
+/* ===================================================================
+ * # empresas
+ *
+ * ------------------------------------------------------------------- */
+ 
+/* Very important for having a smooth transitions. */
+.swiper-free-mode > .swiper-wrapper {
+  transition-timing-function: linear;
+}
+
+
+img,
+picture {
+max-width: 100%;
+display: block;
+}
+
+.u-wrapper {
+max-width: 1440px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-around;
+width: 100%;
+}
+
+.c-carousel {
+overflow-x: hidden;
+position: relative;
+width: 100%;
+}
+
+.c-carousel__wrapper.swiper {
+margin: 0 48px;
+position: static;
+}
+
+.c-carousel__inner-wrapper.swiper-wrapper {
+display: flex;
+align-items: center;
+}
+
+.c-carousel img {
+margin: 0 auto;
+}
+
+
 
 
 
@@ -3479,4 +3536,223 @@ html.no-csstransitions .hero-content {
     bottom: 4rem;
   }
 
+}
+
+
+
+
+.slider {
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+
+}
+
+.slider .slide-track {
+animation: scroll 40s linear infinite;
+display: flex;
+width: calc(250px * 14);
+
+}
+
+.slider .slide {
+  height: 100px;
+  width: 250px;
+
+}
+
+
+
+
+body {
+	align-items: center;
+	justify-content: center;
+}
+
+
+
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7))}
+}
+
+.slider {
+	height: 100px;
+	margin: auto;
+	overflow:hidden;
+	position: relative;
+	width: auto;
+	
+	.slide-track {
+		animation: scroll $animationSpeed linear infinite;
+		display: flex;
+		width: calc(250px * 14);
+	}
+	.slide {
+		height: 100px;
+		width: 250px;
+	}
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-flow: column;
+  position: relative;
+}
+.carousel {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+.carousel .item {
+  width: 20%;
+  height: 250px;
+  max-width: 250px;
+  /* background-color: white; */
+  margin: 2px;
+  transition: 0.5s;
+  object-fit: cover;
+  filter: brightness(1);
+}
+.carousel .item:hover {
+  filter: brightness(1);
+  transform: translateZ(170px);
+}
+.carousel .item:hover + * {
+  filter: brightness(0.6);
+  transform: translateZ(120px) rotateY(25deg);
+}
+.carousel .item:hover + * + * {
+  filter: brightness(0.4);
+  transform: translateZ(50px) rotateY(15deg);
+}
+.carousel .item:has(+ *:hover) {
+  filter: brightness(0.6);
+  transform: translateZ(120px) rotateY(-25deg);
+}
+.carousel .item:has(+ * + *:hover) {
+  filter: brightness(0.4);
+  transform: translateZ(50px) rotateY(-15deg);
+}
+.code-by {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background-color: #ffffff4a;
+  width: 100%;
+  padding: 20px 0;
+  transition: 0.9s;
+}
+.code-by:hover {
+  background-color: transparent;
+}
+.code-by h2 {
+  color: aliceblue;
+  font-size: 30px;
+}
+.code-by h2 span {
+  text-transform: uppercase;
+  position: relative;
+  font-size: 30px;
+}
+.code-by h2 span::before {
+  content: attr(data);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: rgb(22, 77, 126);
+  text-transform: uppercase;
+  /* width: 0; */
+  opacity: 0;
+  transition: 0.99s;
+}
+.code-by h2 span:hover::before {
+  width: 100%;
+  opacity: 1;
+}
+
+
+/*galeria*/
+
+#portfolio {
+  padding-bottom: 100px;
+}
+
+.wrapper {
+	width: min(100% - 1rem, 1200px);
+	margin: auto;
+	display: grid;
+	gap: 1rem;
+}
+.wrapper-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	transition: 500ms ease-in-out;
+}
+.wrapper-row > div {
+	position: relative;
+	background: hotpink;
+	border-radius: 10px;
+	height: 400px; /* fixed height - could use media queries to adjust for smaller/larger viewports as required */
+
+	/* place text in center for demo*/
+	display: grid;
+	place-content: center;
+
+	/* background image */
+	background-image: var(--bg-img);
+	background-size: 110%; /* by giving the background image a fixed width and height it doesn't grow or shrink as the viewport changes */
+	background-repeat: no-repeat;
+	background-position-x: var(--bg-pos-x, left);
+	background-position-y: var(--bg-pos-y, center);
+	transition: 500ms ease-in-out;
+}
+
+/* define image for each card */
+.img-1 {
+	--bg-img: url(/Ethos-1.0.0/images/foto\ equipe.JPG);
+}
+.img-2 {
+	--bg-img: url(/Ethos-1.0.0/images/foto\ equipe\ 2.jpg);
+	--bg-pos-x: right;
+}
+.img-3 {
+	--bg-img: url(/Ethos-1.0.0/images/foto\ equipe\ \ 3.JPG);
+}
+.img-4 {
+	--bg-img: url(/Ethos-1.0.0/images/foto\ equipe\ 4.jpg);
+	--bg-pos-x: right;
+}
+
+.wrapper:has(.wrapper-row > div:hover) > .wrapper-row > div:not(:hover) {
+	filter: grayscale(1);
+}
+.wrapper-row:has(div:first-child:hover) {
+	grid-template-columns: 2fr 1fr;
+}
+.wrapper-row:has(div:last-child:hover) {
+	grid-template-columns: 1fr 2fr;
+}
+
+body {
+	min-height: 300svh;
+	background-color: black;
+	font-family: system-ui;
+	padding: 2rem;
+}
+h2 {
+	font-size: 1.2rem;
+	font-weight: 400;
 }
